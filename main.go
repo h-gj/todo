@@ -1,19 +1,15 @@
 package main
 
-
 import (
+	m "todo/models"
+	"todo/pkg/settings"
 	"todo/routes"
 )
 
-
-type CreateToDoService struct {
-	Content string `form:"content" binding:"required"`
-}
-
 func main() {
 	r := routes.InitRoutes()
-	db := InitDb()
+	settings.SetUp()
+	m.SetUp()
+	InitDb()
 	r.Run()
 }
-
-
